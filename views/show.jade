@@ -12,10 +12,12 @@ block content
 		hr
 		if post.comments
 			h3 Comments
-			each comment in comments
+			each comment in post.comments
 				.comment
 					p.comment-name #{comment.name}
 					p.comment-text #{comment.body}
+					p.comment-date
+						i #{moment(comment.commentdate).format("DD-MM-YYYY, h:mm a")}
 			br
 		h3 Add Comment
 		if errors
