@@ -7,10 +7,14 @@ router.get('/show/:id',function(req,res,next){
 	var db = req.db;
 	var id = req.params.id;
 	var posts = db.get('posts');
-	posts.findbyId('id',function(err,post){
+	posts.findById(id,function(err,post){
+		if (err){
+			console.log(err.message);
+		}
 		res.render('show',{
 			"post":post
 		});
+		
 	});
 }); 
 
